@@ -1,8 +1,8 @@
 # Node Authentication
 
-### Uses Passport to authenticate and connect accounts storing account data in a MongoDB
+##### Uses Passport to authenticate and connect accounts storing account data in a MongoDB
 
-### Accounts include:
+##### Accounts include:
 * Local Account
 * Google
 * Twitter
