@@ -7,6 +7,6 @@
 * Google
 * Twitter
 * Github
-* Instgram
+* Instagram
 * Facebook
 * LinkedIn
