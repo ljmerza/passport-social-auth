@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+	<title>Node Authentication</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+		.bord {border: solid 1px black;}
+		.account-title {font-size: 25px;}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<div class="page-header text-center">
+			<h1><span class="fa fa-cog"></span> Profile Page</h1>
+			<a href="/logout" class="btn btn-default btn-lg">Logout</a>
+		</div>
+
+		<div class="row">
+			<!-- local account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-default'><span class="fa fa-user"> Local</div>
+						<% if (user.local.email) { %>
+							<a href="/unlink/local" class="btn btn-default col-xs-12 col-sm-4">Unlink</a>
+						</div>
+
+						<p>
+							<strong>id</strong>: <%= user._id %><br>
+							<strong>email</strong>: <%= user.local.email %><br>
+							<strong>password</strong>: <%= user.local.password %>
+						</p>
+						
+						
+						<% } else { %>
+							<a href="/connect/local" class="btn btn-default col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+					</div>
+				</div>
+
+			<!-- facebook account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-primary'><span class="fa fa-facebook"></span> Facebook</div>
+						
+					<!-- check if the user has this token (is the user authenticated with this social account) -->
+					<% if (user.facebook.token) { %>
+							<a href="/unlink/facebook" class="btn btn-primary col-xs-12 col-sm-4">Unlink</a>
+					</div>
+						<p>
+							<strong>id</strong>: <%= user.facebook.id %><br>
+							<strong>token</strong>: <%= user.facebook.token %><br>
+							<strong>name</strong>: <%= user.facebook.name %><br>
+						</p>
+
+					<% } else { %>
+						<a href="/connect/facebook" class="btn btn-primary col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+
+				</div>
+			</div>
+
+			<!-- twitter account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-info'><span class="fa fa-twitter"></span> Twitter</div>
+						
+					<% if (user.twitter.token) { %>
+							<a href="/unlink/twitter" class="btn btn-info col-xs-12 col-sm-4">Unlink</a>
+						</div>
+						<p>
+							<strong>id</strong>: <%= user.twitter.id %><br>
+							<strong>token</strong>: <%= user.twitter.token %><br>
+							<strong>display name</strong>: <%= user.twitter.displayName %><br>
+							<strong>username</strong>: <%= user.twitter.username %>
+						</p>
+
+					<% } else { %>
+						<a href="/connect/twitter" class="btn btn-info col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<!-- google account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-danger'><span class="fa fa-google"></span> Google</div>
+						
+					<% if (user.google.token) { %>
+							<a href="/unlink/google" class="btn btn-danger col-xs-12 col-sm-4">Unlink</a>
+					</div>
+						<p>
+							<strong>id</strong>: <%= user.google.id %><br>
+							<strong>token</strong>: <%= user.google.token %><br>
+							<strong>email</strong>: <%= user.google.email %><br>
+							<strong>name</strong>: <%= user.google.name %>
+						</p>
+
+					<% } else { %>
+						<a href="/connect/google" class="btn btn-danger col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+
+				</div>
+			</div>
+
+			<!-- instagram account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-warning'><span class="fa fa-instagram"></span> Instagram</div>
+						
+					<% if (user.instagram.token) { %>
+							<a href="/unlink/instagram" class="btn btn-warning col-xs-12 col-sm-4">Unlink</a>
+					</div>
+						<p>
+							<strong>id</strong>: <%= user.instagram.id %><br>
+							<strong>token</strong>: <%= user.instagram.token %><br>
+							<strong>username</strong>: <%= user.instagram.username %><br>
+							<strong>name</strong>: <%= user.instagram.name %>
+						</p>
+
+					<% } else { %>
+						<a href="/connect/instagram" class="btn btn-warning col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+
+				</div>
+			</div>
+
+			<!-- linkedin account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-info'><span class="fa fa-linkedin"></span> Linkedin</div>
+						
+					<% if (user.linkedin.token) { %>
+							<a href="/unlink/linkedin" class="btn btn-info col-xs-12 col-sm-4">Unlink</a>
+						</div>
+						<p>
+							<strong>id</strong>: <%= user.linkedin.id %><br>
+							<strong>token</strong>: <%= user.linkedin.token %><br>
+							<strong>name</strong>: <%= user.linkedin.name %>
+						</p>
+
+					<% } else { %>
+						<a href="/connect/linkedin" class="btn btn-info col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- github account -->
+			<div class="col-sm-4">
+				<div class="well">
+					<div class='row'>
+						<div class='col-xs-12 col-sm-8 account-title text-success'><span class="fa fa-github"></span> Github</div>
+						
+					<% if (user.github.token) { %>
+							<a href="/unlink/github" class="btn btn-success col-xs-12 col-sm-4">Unlink</a>
+						</div>
+						<p>
+							<strong>id</strong>: <%= user.github.id %><br>
+							<strong>token</strong>: <%= user.github.token %><br>
+							<strong>name</strong>: <%= user.github.name %><br>
+							<strong>login</strong>: <%= user.github.username %><br>
+							<strong>url</strong>: <%= user.github.url %><br>
+							<strong>email</strong>: <%= user.github.email %><br>
+						</p>
+
+					<% } else { %>
+						<a href="/connect/github" class="btn btn-success col-xs-12 col-sm-4">Connect</a>
+						</div>
+					<% } %>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
